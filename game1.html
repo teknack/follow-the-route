@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html>
+
+<head></head>
+
+<style type="text/css">
+
+body{margin:40px; background:#666;}
+
+#new_canvas{ background:#FFF; border:#000 1px solid;}
+
+#new_canvas {
+
+    padding-left: 0;
+
+    padding-right: 0;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    display: block;
+
+    width: 800px;
+
+}
+
+</style>
+
+<body>
+
+<canvas id="new_canvas" width="800" height="550" ></canvas>
+
+
+
+
+<script type="text/javascript">
+
+
+
+
+
+
+
+x=10;
+
+y= 270;
+
+function keyInput(evt){
+
+var key_press = String.fromCharCode(event.keyCode);
+
+switch (evt.keyCode)
+{
+
+case 38: //up arrow 
+
+{
+//modified
+if(y<8){
+  y=8;
+}
+
+if((y<210 && x<305) | (y<210 && x >450))
+{
+  y=210;
+}
+//modified
+
+
+if ((x<=300 && y>200 && y<=350) |  (x>450 && x<=800 && 200<y<=350) )
+
+y-=3;
+if (x>300 && x<=450 && 0<=y<550) 
+y-=3;
+
+}
+break;
+
+case 40:  //down arrow
+
+{
+
+
+  //modified
+  if(y>540){
+    y=540;
+  }
+
+if((y>340 && x<305) | (y>340 && x >450))
+  {y=340;}
+
+//modified
+
+if ((x<=300 && y>200 && y<=350) |  (x>450 && x<=800 && 200<y<=350) )
+
+y+=3;
+
+if (x>300 && x<=450 && 0<=y<550)
+y+=3;
+
+}
+break;
+
+case 37:   //left arrow
+{
+
+  //modified
+if(x<10)
+  {x=10;}
+
+if((x<310 && y<200) | (x<310 && y>340))
+  {x=310;}
+//modified
+
+
+if ((x<=300 && y>200 && y<=350) |  (x>450 && x<=800 && 200<y<=350) )
+
+x-=3;
+
+
+if (x>300 && x<=450 && 0<=y<550)
+
+x-=3;
+}break;
+
+case 39:
+
+{
+  //modified
+
+if(x>788){
+  x=788;
+}
+if((x>440 && y<200) | (x>440 && y>340))
+  {x=440;}
+
+//modified
+if ((x<=300 && y>200 && y<=350) |  (x>450 && x<=800 && 200<y<=350) )
+
+x+=3;
+
+if (x>300 && x<=450 && 0<=y<550)
+x+=3;
+}break;
+
+
+}
+
+}
+
+
+
+
+ function init() {
+
+          var ctx = document.getElementById('new_canvas').getContext('2d');
+
+          function player(x, y, r)
+
+		  {
+
+            ctx.clearRect(0, 0, 800, 550);
+
+            ctx.beginPath();
+
+            ctx.arc(x, y, r, 0, Math.PI * 2, true);
+
+            
+
+          }
+
+
+
+
+  function draw() 
+
+		  {
+
+		  var ctx = document.getElementById('new_canvas').getContext('2d');
+
+            player(x, y, 5);
+
+			      ctx.lineWidth = "3";
+
+             //ctx.strokeRect(10, 10, 400, 400);
+
+            ctx.stroke();
+
+     
+
+		     ctx.beginPath();
+
+             ctx.moveTo(0,350);
+
+ctx.lineTo(300,350);
+
+ctx.lineTo(300,550);
+
+ctx.stroke();
+
+ctx.lineTo(450,550);
+
+ctx.lineTo(450,350);
+
+ctx.stroke();
+
+ctx.lineTo(800,350);
+
+ctx.lineTo(800,200);
+
+ctx.stroke();
+
+ctx.lineTo(450,200);
+
+ctx.lineTo(450,0);
+
+ctx.lineTo(300,0);
+
+ctx.stroke();
+
+ctx.lineTo(300,200);
+
+ctx.lineTo(0,200);
+
+ctx.lineTo(0,350);
+
+
+
+
+ctx.stroke();
+
+ctx.closePath();
+
+requestAnimationFrame(draw);
+
+          }
+
+          draw();
+
+
+
+
+        }
+
+		
+
+        window.onload = init();
+
+        window.addEventListener('keydown', keyInput);
+
+		
+
+
+
+
+
+
+
+	
+
+</script>
+
+
+
+</body>
+
+
+
+
+</html>
