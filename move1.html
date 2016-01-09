@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8"/>
+
+<title>Follow The Route</title>
+
+<body>
+
+<style>
+
+#my_can
+{
+background-color:lightblue;
+
+border: 2px solid black;
+
+margin:10px;
+}
+
+</style>
+
+<div>
+
+<canvas id="my_can" width="1300" height="750">
+
+This text is displayed if your browser does not support HTML5 canvas.
+
+</canvas>
+
+<div>
+
+<script>
+
+var x=25;
+
+var y=300;
+
+function keyInput(evt){
+
+var key_press = String.fromCharCode(event.keyCode);
+
+switch (evt.keyCode){
+
+case 38: //up arrow pressed
+
+{
+if ((x>0 && x<150 && y>258 && y<350) || (x>150 && x<350 && y>110 && y<350) || (x>350 && x<450 && y>255 && y<350) || (x>450 && x<600 && y>52 && y<=453 )
+      || (x>=450 && y>453 && y<550) || (x>=250 && x<450 && y>453 & y<550) || (x>=400 && x<900 && y>653 && y<750) || (x>=900 && x<1050 && y>52&& y<750)
+|| (x>600 &&x<1300 && y>52 && y<150) || (x>=1150 && x<1300 && y>50 && y<550) ||   (x>=600 && x<1300 && y>252 && y<350)
+|| (x>=600 && x<900 && y>253 && y<350))
+y-=3;
+
+}
+break;
+
+case 40: //down arrow pressed
+
+{
+
+if ((x>0 && x<450 && y>100 && y<345) || (x>450 && x<600 && y>50 && y<450) || (x>=450 && y>=450 && y<547)
+   || (x>=250 && x<400 && y>450 & y<747) || (x>=400 && x<900 && y>650 && y<747) || (x>=900 && x<1050 && y>50 && y<747)
+|| (x>600 && x<1300 && y>50 && y<147) || (x>=1150 && x<1300 && y>146 && y<546) || (x>=600 && x<1300 && y>250 && y<347)
+   || (x>=600 && x<900 && y>250 && y<347) || (x>=400 && x<450 && y>450 & y<547))
+y+=3;
+
+}
+break;
+
+case 37: //left arrow pressed
+
+{
+if ((x>=3 && x<=151 && y>255 && y<350) || (x>151 && x<350 && y>105 && y<350) || (x>=350 && x<=451 && y>252 && y<350) 
+|| (x>451 && x<600 && y>50 && y<450)
+      || (x>253 && x<1300 && y>=450 && y<550) || (x>253 && x<1050 && y>650 && y<750)
+        || (x>253 && x<400 && y>550 && y<650) || (x>600 &&x<1300 && y>50 && y<150)
+          || (x>=600 && x<1300 && y>250 && y<350) ||  (x>=1153 && x<1300 && y>50 && y<550) || (x>=903 && x<1050 && y>50 && y<750))
+
+x-=3;
+
+
+
+}
+
+break;
+
+
+
+
+
+
+
+case 39: //right arrow pressed
+
+
+{
+if ((x>=3 && x<150 && y>255 && y<350) || (x>=150 && x<349 && y>105 && y<350) || (x>=349 && x<450 && y>252 && y<350) || (x>=450 && x<598 && y>50 && y<450)
+ || (x>=250 && x<1297 && y>=450 && y<550) || (x>=250 && x<1047 && y>650 && y<750) || (x>=250 && x<397 && y>550 && y<650) || (x>=598 && x<1300 && y>50 && y<150)
+|| (x>=598 && x<1297 && y>250 && y<350) ||  (x>=1050 && x<1297 && y>50 && y<550) || (x>=900 && x<1048 && y>50 && y<=750)) 
+
+x+=3;
+
+}
+
+
+
+
+break;
+
+
+
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+function init() {
+
+          var can = document.getElementById('my_can').getContext('2d');
+
+          function player(x, y, r) {
+
+            can.clearRect(0, 0, 1300, 750);
+
+            can.beginPath();
+
+            can.arc(x, y, r, 0, Math.PI * 2, true);
+
+            can.fill();
+
+			}
+
+
+
+
+function draw()
+
+{
+
+var can = document.getElementById('my_can').getContext('2d');
+
+
+
+
+player(x, y, 6);
+
+            can.lineWidth = "2";
+
+            //can.strokeRect(10,10, 300, 300);
+
+            can.stroke();
+
+			
+
+			can.beginPath();
+
+			can.moveTo(1300,50);
+
+			can.lineTo(450,50);
+
+			can.lineTo(450,250);
+
+			can.lineTo(350,250);
+
+			can.lineTo(350,100);
+
+			can.lineTo(150,100);
+
+			can.lineTo(150,250);
+
+			can.lineTo(0,250);
+
+			can.stroke();
+
+			
+
+			can.strokeRect(1050,150, 100, 100);
+
+			can.strokeRect(1050,350, 100, 100);
+
+			
+
+			can.strokeRect(600,150, 300, 100);
+
+			can.strokeRect(600,350, 300, 100);
+
+			
+
+			can.moveTo(0,350);
+
+			can.lineTo(450,350);
+
+			can.lineTo(450,450);
+
+			can.lineTo(250,450);
+
+			can.lineTo(250,750);
+
+			can.lineTo(1050,750);
+
+			can.lineTo(1050,550);
+
+			can.lineTo(1300,550);
+
+			can.lineTo(1300,50);			
+
+			can.stroke();
+
+			
+
+			can.strokeRect(400,550, 500, 100);
+
+			
+
+			can.closePath();
+
+			
+
+			requestAnimationFrame(draw);
+
+
+
+
+          }
+
+
+
+
+          draw();
+
+
+
+
+        }
+
+
+
+
+window.onload = init();
+
+
+
+
+window.addEventListener('keydown',keyInput,true);
+
+		  
+
+</script>
+
+</body>
+
+</html>
